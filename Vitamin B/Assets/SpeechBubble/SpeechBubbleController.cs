@@ -34,13 +34,16 @@ public class SpeechBubbleController : MonoBehaviour
     private float textFillSpeedMax = 1.0f;
 
     private string[] BlaList = 
-        { "Bla ", "Bla ", "Bla ", "Bla ", "Bla ", "Bla ", "Bla ", "Bla ", "Bla ", "Bla ", "Bla", "Bla? ", "Bla! ", "BlaBla ", "Blaaaaa "};
-    
+        { "Bla ", "Bla? ", "Bla! ", "BlaBla ", "Blaaaaa "};
+
+    [SerializeField] private AudioClip[] BlaSounds;
     
     private string keyword = "";
     private int wordCount = 0;
     private int wordMax = 8;
     private int NoTopicsLength = Enum.GetNames(typeof(NoTopics)).Length;
+
+    [SerializeField] private AudioSource source;
     
     [SerializeField]
     private TextMeshPro content;
@@ -50,6 +53,7 @@ public class SpeechBubbleController : MonoBehaviour
     
     private void Awake()
     {
+        source = GetComponent<AudioSource>();
         StartCoroutine(FillBubbleDelayed());
         //StartCoroutine(FillBubbleError("Bitcoin"));
     }
@@ -98,7 +102,9 @@ public class SpeechBubbleController : MonoBehaviour
         }
         else
         {
-            content.text = content.text + BlaList[Random.Range(0, BlaList.Length - 1)];
+            int blaIndex = getRandomBlaIndex();
+            content.text = content.text + BlaList[blaIndex];
+            source.PlayOneShot(BlaSounds[blaIndex]);
         }
         
         wordCount++;
@@ -130,5 +136,31 @@ public class SpeechBubbleController : MonoBehaviour
     {
         StopAllCoroutines();
         Destroy(this.gameObject);
+    }
+
+    private int getRandomBlaIndex()
+    {
+        switch (Random.Range(0, 10))
+        {
+            case 0:
+                return 1;
+                break;
+            
+            case 1:
+                return 2;
+                break;
+            
+            case 2:
+                return 3;
+                break;
+            
+            case 3:
+                return 4;
+                break;
+            
+            default:
+                return 0;
+                break;
+        }
     }
 }
