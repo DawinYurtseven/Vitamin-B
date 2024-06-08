@@ -52,21 +52,29 @@ public class Guest : MonoBehaviour, IGuest
                 
                 _skinnedMeshRenderers[modelIndex].material = _vibeMaterials[(int)_vibecheck];
 
-                Mesh _hatAndHair = customization.ReceiveHatAndHair();
                 if (_hatAndHairReferences[modelIndex].TryGetComponent<MeshFilter>(out MeshFilter meshFilter))
                 {
-                    meshFilter.mesh = _hatAndHair;
+                    meshFilter.mesh = customization.ReceiveHatAndHair();
                 }
                 /*
+                Material _hatAndHairMaterial = customization.ReceiveHatAndHairMaterial();
                 if (_hatAndHairReferences[modelIndex].TryGetComponent<MeshRenderer>(out MeshRenderer meshRenderer))
                 {
-                    meshRenderer.material = 
+                    meshRenderer.material = _hatAndHairMaterial;
                 }
                 */
+                
+                
                 if (_beardReferences[modelIndex].TryGetComponent<MeshFilter>(out MeshFilter meshFilter2))
                 {
                     meshFilter2.mesh = customization.ReceiveBeard();
                 }
+                /*
+                if (_beardReferences[modelIndex].TryGetComponent<MeshRenderer>(out MeshRenderer meshRenderer))
+                {
+                    meshRenderer.material = _hatAndHairMaterial;
+                }
+                */
                 
                 if (_glassesReferences[modelIndex].TryGetComponent<MeshFilter>(out MeshFilter meshFilter3))
                 {
