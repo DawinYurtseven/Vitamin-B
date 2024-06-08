@@ -57,7 +57,8 @@ public class SpeechBubbleContent : MonoBehaviour
     
     IEnumerator FillBubbleDelayed()
     {
-        content.text.Append<>();
+        content.text.Append<>("Bla ");
+        yield return null;
     }
 }
 

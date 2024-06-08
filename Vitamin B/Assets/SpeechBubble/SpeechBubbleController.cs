@@ -10,6 +10,6 @@ public class SpeechBubbleController : MonoBehaviour
 
     private void Awake()
     {
-        _bubbleContent.FillBubble();
+        //_bubbleContent.FillBubble();
     }
 }
