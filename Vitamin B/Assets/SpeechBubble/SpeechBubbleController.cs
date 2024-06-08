@@ -1,19 +1,95 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using System.Linq;
+using Random = UnityEngine.Random;
+
+public enum Topics
+{
+    Business
+}
+
+public enum NoTopics
+{
+    Bitcoin,
+    NFTs,
+    Blockchain,
+    AI,
+    Crypto,
+    Microtransactions,
+    Battlepass,
+    Lifeservice,
+    Publisher,
+    Investors
+}
 
 public class SpeechBubbleController : MonoBehaviour
 {
+    [SerializeField]
+    private float textFillSpeed = 0.5f;
+
+    private bool keywordSpawned = false;
+    private int wordCount = 0;
+    private int wordMax = 8;
+    private int NoTopicsLength = Enum.GetNames(typeof(NoTopics)).Length;
+    
+    [SerializeField]
+    private TextMeshPro content;
+    private String targetName = "Bob";
+   
+    
 
     private void Awake()
     {
-        
+        //content = GetComponentInChildren<TextMeshPro>();
+        StartCoroutine(FillBubbleDelayed());
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
         
+    }
+    
+    IEnumerator FillBubbleDelayed()
+    {
+        Debug.Log("test");
+        if (wordCount > wordMax)
+        {
+            content.text = "";
+            wordCount = 0;
+            keywordSpawned = false;
+        }
+
+        if (Random.Range(0 + wordCount, wordMax) == wordMax && !keywordSpawned)
+        {
+            string keyword = "";
+            if (Random.Range(0, 3) == 3)
+            {
+                keyword = targetName;
+            }
+            else
+            {
+                keyword = Enum.GetName(typeof(NoTopics), Random.Range(0, NoTopicsLength - 1));
+            }
+            keywordSpawned = true;
+            content.text = content.text + keyword;
+        }
+        else
+        {
+            content.text = content.text + "Bla ";
+            //content.text.Concat("Bla ");
+        }
+        
+        wordCount++;
+        yield return new WaitForSeconds(textFillSpeed);
+        StartCoroutine(FillBubbleDelayed());
+    }
+
+    public void StopSpeechBubble()
+    {
+        StopAllCoroutines();
+        Destroy(this.gameObject);
     }
 }

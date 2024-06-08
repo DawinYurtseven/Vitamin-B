@@ -5,5 +5,7 @@ public interface IGuest
 {
     public VIBECHECK Vibecheck { get; set; }
     
-    public Dictionary<Guest, List<Topics>> GetContacts() {}
+    public Dictionary<Guest, List<Topics>> Contacts { get; }
+    
+    public string Name { get; }
 }

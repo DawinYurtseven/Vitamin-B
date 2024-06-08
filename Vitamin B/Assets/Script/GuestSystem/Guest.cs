@@ -2,8 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Guest : MonoBehaviour
+public class Guest : MonoBehaviour, IGuest
 {
+    [SerializeField]
+    private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
+
+    [SerializeField] private string _name = "placeholder";
+    
+    [SerializeField]
+    private List<Guest> _contacts = new List<Guest>();
+    
+    /* would be the dream
+    [SerializeField]
+    private Dictionary<Guest, List<Topics>> _contacts = new Dictionary<Guest, List<Topics>>();
+    */
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +29,39 @@ public class Guest : MonoBehaviour
     {
         
     }
+
+    public VIBECHECK Vibecheck
+    {
+        get
+        {
+            return _vibecheck;
+        }
+        set
+        {
+            _vibecheck = value;
+        }
+    }
+
+    public Dictionary<Guest, List<Topics>> Contacts
+    {
+        get
+        {
+            Dictionary<Guest, List<Topics>> result = new Dictionary<Guest, List<Topics>>();
+            foreach (Guest contact in _contacts)
+            {
+                result.Add(contact, new List<Topics>());
+            }
+
+            return result;
+        }
+    }
+
+    public string Name
+    {
+        get
+        {
+            return _name;
+        }
+    }
+
 }
