@@ -41,13 +41,26 @@ public class GuestCustimization : MonoBehaviour
     [SerializeField] private Mesh[] _neck;
     [SerializeField] private Mesh[] _beards;
     [Range(0.0f, 1.0f), SerializeField] private float _beardPartProbability;
+
+    [Header("Voices")] 
+    [SerializeField] private AudioClip[] _voiceSet1;
+    [SerializeField] private AudioClip[] _voiceSet2;
+    [SerializeField] private AudioClip[] _voiceSet3;
+    [SerializeField] private AudioClip[] _voiceSet4;
+    [SerializeField] private AudioClip[] _voiceSet5;
+
+    private AudioClip[][] _audioSets;
     
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _audioSets[0] = _voiceSet1;
+        _audioSets[1] = _voiceSet2;
+        _audioSets[2] = _voiceSet3;
+        _audioSets[3] = _voiceSet4;
+        _audioSets[4] = _voiceSet5;
     }
 
     // Update is called once per frame
@@ -121,5 +134,10 @@ public class GuestCustimization : MonoBehaviour
         }
         */
         return _beards[Random.Range(0,_beards.Length)];
+    }
+
+    public AudioClip[] ReceiveVoice()
+    {
+        return _audioSets[Random.Range(0, _audioSets.Length)];
     }
 }

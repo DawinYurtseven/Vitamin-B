@@ -43,18 +43,26 @@ public class Guest : MonoBehaviour, IGuest
     void Awake()
     {
         GuestCustimization customization = GuestCustimization.Instance;
-        
-        _vibeMaterials = customization.ReceiveMaterials();
-        _name = customization.ReceiveName();
 
-        if (TryGetComponent<SkinnedMeshRenderer>(out SkinnedMeshRenderer mesh))
+        int modelIndex = customization.ReceiveModel();
+        for (int i = 0; i < _models.Length; i++)
         {
-            mesh.material = _vibeMaterials[(int)_vibecheck];
-        }
+            if (i != modelIndex)
+            {
+                Destroy(_models[i]);
+            }
+            else
+            {
+                _vibeMaterials = customization.ReceiveMaterials();
+                _name = customization.ReceiveName();
+                
+                _skinnedMeshRenderers[modelIndex].material = _vibeMaterials[(int)_vibecheck];
 
-        _hatAndHair = customization.ReceiveHatAndHair();
-        _beard = customization.ReceiveBeard();
-        _glasses = customization.ReceiveGlasses();
+                _hatAndHair = customization.ReceiveHatAndHair();
+                _beard = customization.ReceiveBeard();
+                _glasses = customization.ReceiveGlasses();
+            }
+        }
     }
 
     // Update is called once per frame

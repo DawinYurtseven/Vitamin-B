@@ -222,6 +222,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2717260993483984352, guid: 0305de4c7d44689468e477a50beda7ad,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4493585093827132993, guid: 3c98ac139769535478a2fca77edffd59,
+        type: 3}
     - target: {fileID: 3549593803943507463, guid: 0305de4c7d44689468e477a50beda7ad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -442,7 +448,26 @@ MonoBehaviour:
   _names:
   - A
   - B
-  _models: []
+  _models:
+  - {fileID: 4493585093827132993, guid: 03336be3c28d6794683e3293799298b9, type: 3}
+  - {fileID: -3103093557580486280, guid: c5e50296b7bdb5c47ae22902d9f8e0a8, type: 3}
+  - {fileID: -6395832848909569967, guid: a0cee01605d79264c91e49d4cf856213, type: 3}
+  _hatsAndHair:
+  - {fileID: -2432090755550338912, guid: 7d61b7e6bddcc10438c7f42ecf0b63cc, type: 3}
+  - {fileID: -2432090755550338912, guid: 10c73492346d1ad40a21f862a0673f6f, type: 3}
+  - {fileID: -2432090755550338912, guid: 57754ddf3e4065d4898c00347529ea4b, type: 3}
+  - {fileID: -2432090755550338912, guid: 8ef5313e47ac68943875aeb8e9c028e6, type: 3}
+  - {fileID: -2432090755550338912, guid: fa5fd3c9bb141134888d4266484c5f5a, type: 3}
+  - {fileID: -2432090755550338912, guid: 22b66ebd989d2af4996774daefea91f4, type: 3}
+  - {fileID: -2432090755550338912, guid: 57e885a83a5c27f44aa8721f5334fd00, type: 3}
+  - {fileID: -2432090755550338912, guid: e5e89312181b7b84780eb08cbaf54e88, type: 3}
+  _glasses:
+  - {fileID: -2432090755550338912, guid: d6cbdb0a0bc82a54c93a87dc88d0eca6, type: 3}
+  _beards:
+  - {fileID: -2432090755550338912, guid: 87a01976fdedeef418bfdeecb421d03a, type: 3}
+  - {fileID: -2432090755550338912, guid: b151562292b51b340b8a0acd30dfa809, type: 3}
+  - {fileID: -2432090755550338912, guid: e045738f584f1e243ad036de5a2422fe, type: 3}
+  _beardPartProbability: 0
 --- !u!4 &1243640141
 Transform:
   m_ObjectHideFlags: 0
