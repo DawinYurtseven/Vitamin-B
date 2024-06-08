@@ -25,7 +25,8 @@ public class Interact : MonoBehaviour
         //Debug.Log(hit.transform.gameObject);
         if (!hit.IsUnityNull())
         {
-            Instantiate(SpeechBubblePrefab, SpeechBubbleOffset, Quaternion.identity, hit.transform);
+            GameObject temp = Instantiate(SpeechBubblePrefab, SpeechBubbleOffset, Quaternion.identity, hit.transform);
+            temp.GetComponent<SpeechBubbleController>().target = hit.transform.GetComponent<IGuest>();
         }
     }
 
