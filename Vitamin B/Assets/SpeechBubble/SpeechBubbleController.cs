@@ -5,15 +5,11 @@ using UnityEngine;
 
 public class SpeechBubbleController : MonoBehaviour
 {
+    [SerializeField]
+    private SpeechBubbleContent _bubbleContent;
 
     private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _bubbleContent.FillBubble();
     }
 }
