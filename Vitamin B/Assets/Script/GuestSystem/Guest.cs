@@ -7,6 +7,9 @@ public class Guest : MonoBehaviour, IGuest
     [SerializeField]
     private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
 
+    [SerializeField] private string _name = "placeholder";
+    
+    [SerializeField]
     private List<Guest> _contacts = new List<Guest>();
     
     /* would be the dream
@@ -50,6 +53,14 @@ public class Guest : MonoBehaviour, IGuest
             }
 
             return result;
+        }
+    }
+
+    public string Name
+    {
+        get
+        {
+            return _name;
         }
     }
 
