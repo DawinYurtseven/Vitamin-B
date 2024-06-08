@@ -5,6 +5,8 @@ using UnityEngine;
 public class Guest : MonoBehaviour, IGuest
 {
     private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
+
+    private Dictionary<Guest, List<Topics>> _contacts = new Dictionary<Guest, List<Topics>>();
     
     private 
     
@@ -29,6 +31,14 @@ public class Guest : MonoBehaviour, IGuest
         set
         {
             _vibecheck = value;
+        }
+    }
+
+    public Dictionary<Guest, List<Topics>> Contacts
+    {
+        get
+        {
+            return _contacts;
         }
     }
 
