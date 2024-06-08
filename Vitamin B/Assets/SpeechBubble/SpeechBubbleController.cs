@@ -22,74 +22,145 @@ public enum NoTopics
     Battlepass,
     Lifeservice,
     Publisher,
-    Investors
+    Investors,
+    BlaBlaCar
 }
 
 public class SpeechBubbleController : MonoBehaviour
 {
     [SerializeField]
-    private float textFillSpeed = 0.5f;
+    private float textFillSpeedMin = 0.1f;
+    [SerializeField]
+    private float textFillSpeedMax = 1.0f;
 
-    private bool keywordSpawned = false;
+    private string[] BlaList = 
+        { "Bla ", "Bla? ", "Bla! ", "BlaBla ", "Blaaaaa "};
+
+    [SerializeField] private AudioClip[] BlaSounds;
+    
+    private string keyword = "";
     private int wordCount = 0;
     private int wordMax = 8;
     private int NoTopicsLength = Enum.GetNames(typeof(NoTopics)).Length;
+
+    [SerializeField] private AudioSource source;
     
     [SerializeField]
     private TextMeshPro content;
-    private String targetName = "Bob";
+
+    private IGuest target;
    
     
-
     private void Awake()
     {
-        //content = GetComponentInChildren<TextMeshPro>();
+        source = GetComponent<AudioSource>();
         StartCoroutine(FillBubbleDelayed());
+        //StartCoroutine(FillBubbleError("Bitcoin"));
     }
 
     public void Interact()
     {
-        
+        if (keyword != "")
+        {
+            if (Enum.IsDefined(typeof(NoTopics), keyword))
+            {
+                StartCoroutine(FillBubbleError(keyword));
+            }
+            else
+            {
+                target.Vibecheck = VIBECHECK.Passed;
+            }
+        }
+        else
+        {
+            //do nothing maybe play error sound
+        }
     }
     
     IEnumerator FillBubbleDelayed()
     {
-        Debug.Log("test");
         if (wordCount > wordMax)
         {
             content.text = "";
             wordCount = 0;
-            keywordSpawned = false;
+            keyword = "";
         }
 
-        if (Random.Range(0 + wordCount, wordMax) == wordMax && !keywordSpawned)
+        if (Random.Range(wordCount, wordMax) == wordMax-1 && keyword == "")
         {
-            string keyword = "";
+            content.text = content.text + "<color=\"red\"> ";
             if (Random.Range(0, 3) == 3)
             {
-                keyword = targetName;
+                keyword = target.Name;
             }
             else
             {
                 keyword = Enum.GetName(typeof(NoTopics), Random.Range(0, NoTopicsLength - 1));
             }
-            keywordSpawned = true;
-            content.text = content.text + keyword;
+            content.text = content.text + keyword + " ";
+            content.text = content.text + "</color> ";
         }
         else
         {
-            content.text = content.text + "Bla ";
-            //content.text.Concat("Bla ");
+            int blaIndex = getRandomBlaIndex();
+            content.text = content.text + BlaList[blaIndex];
+            source.PlayOneShot(BlaSounds[blaIndex]);
         }
         
         wordCount++;
-        yield return new WaitForSeconds(textFillSpeed);
+        yield return new WaitForSeconds(Random.Range(textFillSpeedMin, textFillSpeedMax));
         StartCoroutine(FillBubbleDelayed());
+    }
+
+    IEnumerator FillBubbleError(string errortext)
+    {
+        
+        content.text = content.text + errortext + " ";
+        wordCount++;
+        
+        yield return new WaitForSeconds(Random.Range(textFillSpeedMin, textFillSpeedMax));
+        if (wordCount > wordMax)
+        {
+            content.text = "";
+            wordCount = 0;
+            keyword = "";
+            StartCoroutine(FillBubbleDelayed());
+        }
+        else
+        {
+            StartCoroutine(FillBubbleError(errortext));
+        }
     }
 
     public void StopSpeechBubble()
     {
         StopAllCoroutines();
         Destroy(this.gameObject);
+    }
+
+    private int getRandomBlaIndex()
+    {
+        switch (Random.Range(0, 10))
+        {
+            case 1:
+                return 1;
+                break;
+            
+            case 2:
+                return 2;
+                break;
+            
+            case 3:
+                return 3;
+                break;
+            
+            case 4:
+                return 4;
+                break;
+            
+            default:
+                return 0;
+                break;
+        }
     }
 }

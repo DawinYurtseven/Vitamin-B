@@ -12,7 +12,8 @@ public class CharacterController : MonoBehaviour
     #region Values
 
     [SerializeField] private float speed = 5f;
-    [SerializeField] private GameObject lookTarget, followTarget;
+    [SerializeField] private GameObject followTarget;
+    [SerializeField] private Camera cam;
     [SerializeField] private float uprightTorque;
     [SerializeField] private AnimationCurve uprightTorqueCurve, directionalAngleCurve;
     [SerializeField] private float cameraXSpeed, cameraYSpeed;
@@ -25,7 +26,7 @@ public class CharacterController : MonoBehaviour
     private Vector2 movementVector;
     private float currentSpeed;
 
-    private bool lockRotate = false;
+    private bool lockRotate = true;
 
     #endregion
 
@@ -48,10 +49,7 @@ public class CharacterController : MonoBehaviour
         if (context.performed)
         {
             lockRotate = false;
-            var angles = followTarget.transform.localEulerAngles;
-            transform.rotation = Quaternion.Euler(0, angles.y, 0);
-            followTarget.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
-
+            
             movementVector = context.ReadValue<Vector2>();
             currentSpeed = Mathf.Clamp(currentSpeed + Time.deltaTime * 5, 0, speed);
         }
@@ -81,10 +79,13 @@ public class CharacterController : MonoBehaviour
     {
         if (context.performed)
         {
-            Vector2 delta = context.ReadValue<Vector2>();
+            Vector2 delta = context.ReadValue<Vector2>().normalized;
+            Debug.Log(delta);
 
             followTarget.transform.Rotate(Vector3.up, delta.x * cameraXSpeed * Time.deltaTime);
             followTarget.transform.Rotate(Vector3.right, delta.y * cameraYSpeed * Time.deltaTime);
+            
+            followTarget.transform.localEulerAngles = new Vector3(followTarget.transform.localEulerAngles.x, followTarget.transform.localEulerAngles.y, 0);
             var angles = followTarget.transform.localEulerAngles;
             var angle = followTarget.transform.localEulerAngles.x;
             if (angle > 180 && angle < 340)
@@ -109,10 +110,16 @@ public class CharacterController : MonoBehaviour
         if (movementVector.magnitude == 0)
         {
             currentSpeed = Mathf.Clamp(currentSpeed - Time.deltaTime * 5, 0, speed);
+            rb.angularVelocity = Vector3.zero;
         }
         else
         {
             currentSpeed = Mathf.Clamp(currentSpeed + Time.deltaTime * 5, 0, speed);
+            
+            var angles = followTarget.transform.localEulerAngles;
+            transform.Rotate(Vector3.up, angles.y);
+            followTarget.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
+            
         }
 
         Vector3 moveDirection = new Vector3(movementVector.x, 0, movementVector.y);
@@ -129,20 +136,7 @@ public class CharacterController : MonoBehaviour
         rb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightTorque * balancePer);
 
 
-        var directionAnglePer = 0.0f;
-
-        if (!lockRotate)
-        {
-            directionAnglePer = Vector3.SignedAngle(transform.forward, lookTarget.transform.forward, Vector3.up) / 180;
-        }
-
-        if (Mathf.Abs(directionAnglePer * 25) < 0.25f)
-        {
-            directionAnglePer = 0.0f;
-            rb.angularVelocity = Vector3.zero;
-        }
-
-        rb.AddRelativeTorque(0, directionAnglePer * 25, 0);
+        
     }
 
     #endregion
