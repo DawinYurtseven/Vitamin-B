@@ -7,8 +7,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: m_Base
+    second: {fileID: 2100000, guid: a912d5af191342b4594b573241618000, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_Cloth
+    second: {fileID: 2100000, guid: 1fdbd80c1ee7a134eb03fa2f32a74dc8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_Floor
+    second: {fileID: 2100000, guid: 0d5f42d85080f444fb50b441bc334d05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: m_GlasWindows
     second: {fileID: 2100000, guid: 08b87967b45461c448971d06fdf8b67f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_Light
+    second: {fileID: 2100000, guid: f21756df2af272148a4f9895d73ae5b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_Steel
+    second: {fileID: 2100000, guid: 6dfcd4f87baa39541b0565483b887f3c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -19,6 +44,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: m_Water
     second: {fileID: 2100000, guid: 7a1d4d7720bfe384a8d8b58996cb6a67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_Wood
+    second: {fileID: 2100000, guid: e4d2c6af082012a4482a731d0d6b4501, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
