@@ -32,7 +32,13 @@ public class GuestCustimization : MonoBehaviour
 
     [SerializeField] private string[] _names;
 
-    [Header("Models")] [SerializeField] private Mesh[] _models;
+    [Header("Models")] 
+    [SerializeField] private Mesh[] _models;
+
+    [SerializeField] private Mesh[] _hatsAndHair;
+    [SerializeField] private Mesh[] _glasses;
+    [SerializeField] private Mesh[] _beard;
+    
     
 
     // Start is called before the first frame update
@@ -75,5 +81,35 @@ public class GuestCustimization : MonoBehaviour
             return new Mesh();
         }
         return _models[Random.Range(0,_models.Length)];
+    }
+    
+    public Mesh ReceiveHatAndHair()
+    {
+        if (_models.Length == 0)
+        {
+            Debug.LogError("no hat/hair assign in GuestCustomization");
+            return new Mesh();
+        }
+        return _hatsAndHair[Random.Range(0,_models.Length)];
+    }
+    
+    public Mesh ReceiveGlasses()
+    {
+        if (_models.Length == 0)
+        {
+            Debug.LogError("no models assign in GuestCustomization");
+            return new Mesh();
+        }
+        return _glasses[Random.Range(0,_models.Length)];
+    }
+    
+    public Mesh ReceiveBeard()
+    {
+        if (_models.Length == 0)
+        {
+            Debug.LogError("no models assign in GuestCustomization");
+            return new Mesh();
+        }
+        return _beard[Random.Range(0,_models.Length)];
     }
 }
