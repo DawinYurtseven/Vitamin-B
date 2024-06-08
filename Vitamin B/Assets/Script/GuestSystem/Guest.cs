@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Guest : MonoBehaviour, IGuest
 {
+    [SerializeField]
     private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
 
-    private Dictionary<Guest, List<Topics>> _contacts = new Dictionary<Guest, List<Topics>>();
+    private List<Guest> _contacts = new List<Guest>();
     
-    private 
+    /* would be the dream
+    [SerializeField]
+    private Dictionary<Guest, List<Topics>> _contacts = new Dictionary<Guest, List<Topics>>();
+    */
+    
     
     // Start is called before the first frame update
     void Start()
@@ -38,7 +43,13 @@ public class Guest : MonoBehaviour, IGuest
     {
         get
         {
-            return _contacts;
+            Dictionary<Guest, List<Topics>> result = new Dictionary<Guest, List<Topics>>();
+            foreach (Guest contact in _contacts)
+            {
+                result.Add(contact, new List<Topics>());
+            }
+
+            return result;
         }
     }
 
