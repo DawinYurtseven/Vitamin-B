@@ -142,19 +142,19 @@ public class SpeechBubbleController : MonoBehaviour
     {
         switch (Random.Range(0, 10))
         {
-            case 0:
+            case 1:
                 return 1;
                 break;
             
-            case 1:
+            case 2:
                 return 2;
                 break;
             
-            case 2:
+            case 3:
                 return 3;
                 break;
             
-            case 3:
+            case 4:
                 return 4;
                 break;
             
