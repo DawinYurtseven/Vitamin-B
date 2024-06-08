@@ -35,18 +35,26 @@ public class SpeechBubbleController : MonoBehaviour
     private int wordMax = 8;
     private int NoTopicsLength = Enum.GetNames(typeof(NoTopics)).Length;
     
-    private TMP_Text content;
-    private String targetName;
+    [SerializeField]
+    private TextMeshPro content;
+    private String targetName = "Bob";
    
     
 
     private void Awake()
     {
-        //_bubbleContent.FillBubble();
+        //content = GetComponentInChildren<TextMeshPro>();
+        StartCoroutine(FillBubbleDelayed());
+    }
+
+    public void Interact()
+    {
+        
     }
     
     IEnumerator FillBubbleDelayed()
     {
+        Debug.Log("test");
         if (wordCount > wordMax)
         {
             content.text = "";
@@ -66,14 +74,22 @@ public class SpeechBubbleController : MonoBehaviour
                 keyword = Enum.GetName(typeof(NoTopics), Random.Range(0, NoTopicsLength - 1));
             }
             keywordSpawned = true;
+            content.text = content.text + keyword;
         }
         else
         {
-            content.text.Concat("Bla ");
+            content.text = content.text + "Bla ";
+            //content.text.Concat("Bla ");
         }
         
         wordCount++;
         yield return new WaitForSeconds(textFillSpeed);
         StartCoroutine(FillBubbleDelayed());
+    }
+
+    public void StopSpeechBubble()
+    {
+        StopAllCoroutines();
+        Destroy(this.gameObject);
     }
 }

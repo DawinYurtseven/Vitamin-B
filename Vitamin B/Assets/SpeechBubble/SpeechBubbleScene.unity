@@ -375,6 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1465749717}
   - component: {fileID: 1465749718}
+  - component: {fileID: 1465749719}
   m_Layer: 0
   m_Name: SpeechBubblePivot
   m_TagString: Untagged
@@ -411,6 +412,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d598f57b2932aa47844215ddcaac158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1465749719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465749716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06e2ba7ec57f7a49b4fe8ec1d133409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textFillSpeed: 0.5
+  content: {fileID: 2050630360}
 --- !u!1 &1641057667
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: blabla
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -563,7 +578,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
