@@ -11,6 +11,9 @@ public class Guest : MonoBehaviour, IGuest
     
     [SerializeField]
     private List<Guest> _contacts = new List<Guest>();
+
+    [SerializeField]
+    private Material[] _vibeMaterials = new Material[(int)VIBECHECK.NUM_VIBES];
     
     /* would be the dream
     [SerializeField]
@@ -39,6 +42,10 @@ public class Guest : MonoBehaviour, IGuest
         set
         {
             _vibecheck = value;
+            if (this.TryGetComponent<MeshRenderer>(out MeshRenderer meshRenderer))
+            {
+                meshRenderer.material = _vibeMaterials[(int)value];
+            }
         }
     }
 
