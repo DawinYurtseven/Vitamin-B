@@ -22,9 +22,18 @@ public class GuestCustimization : MonoBehaviour
         }
     }
 
+    [Header("VibeMaterials")]
     [SerializeField] private Material _notPassedMat;
     [SerializeField] private Material[] _passedMats;
     [SerializeField] private Material[] _surpassedMats;
+
+    [Header("GuestNames")] 
+    [SerializeField] private string[] _jobs;
+
+    [SerializeField] private string[] _names;
+
+    [Header("Models")] [SerializeField] private Mesh[] _models;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -51,5 +60,20 @@ public class GuestCustimization : MonoBehaviour
         mats[2] = _surpassedMats[index];
 
         return mats;
+    }
+
+    public string ReceiveName()
+    {
+        return _jobs[Random.Range(0, _jobs.Length)] + " " + _names[Random.Range(0, _names.Length)];
+    }
+
+    public Mesh ReceiveModel()
+    {
+        if (_models.Length == 0)
+        {
+            Debug.LogError("no models assign in GuestCustomization");
+            return new Mesh();
+        }
+        return _models[Random.Range(0,_models.Length)];
     }
 }

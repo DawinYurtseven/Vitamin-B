@@ -13,7 +13,7 @@ public class Guest : MonoBehaviour, IGuest
     private List<Guest> _contacts = new List<Guest>();
 
     [SerializeField]
-    private Material[] _vibeMaterials = new Material[(int)VIBECHECK.NUM_VIBES];
+    private Material[] _vibeMaterials;
     
     /* would be the dream
     [SerializeField]
@@ -21,10 +21,18 @@ public class Guest : MonoBehaviour, IGuest
     */
     
     
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        GuestCustimization customization = GuestCustimization.Instance;
         
+        _vibeMaterials = customization.ReceiveMaterials();
+        _name = customization.ReceiveName();
+
+        if (TryGetComponent<SkinnedMeshRenderer>(out SkinnedMeshRenderer mesh))
+        {
+            mesh.sharedMesh = customization.ReceiveModel();
+            mesh.material = _vibeMaterials[(int)_vibecheck];
+        }
     }
 
     // Update is called once per frame
@@ -42,7 +50,7 @@ public class Guest : MonoBehaviour, IGuest
         set
         {
             _vibecheck = value;
-            if (this.TryGetComponent<MeshRenderer>(out MeshRenderer meshRenderer))
+            if (this.TryGetComponent<SkinnedMeshRenderer>(out SkinnedMeshRenderer meshRenderer))
             {
                 meshRenderer.material = _vibeMaterials[(int)value];
             }
