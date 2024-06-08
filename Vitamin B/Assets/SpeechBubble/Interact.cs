@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Interact : MonoBehaviour
@@ -7,20 +9,34 @@ public class Interact : MonoBehaviour
     [SerializeField]
     private float interactionradius;
     [SerializeField]
-    private float CastOffset;
+    private float raycastlength;
+    //[SerializeField]
+    //private float CastOffset;
 
     [SerializeField]
     private GameObject SpeechBubblePrefab;
     [SerializeField] 
-    private Vector3 SpeechBubbleOffset;
+    private Vector3 SpeechBubbleOffset = new Vector3(-1.25f,2.25f,0f);
     
     public void interact()
     {
         RaycastHit hit;
-        Physics.SphereCast(transform.position + transform.forward * CastOffset, interactionradius, transform.forward, out hit);
-        if (hit.transform.gameObject.GetComponent<IGuest>() != null)
+        Physics.SphereCast(transform.position, interactionradius, transform.forward, out hit, raycastlength, 3);
+        //Debug.Log(hit.transform.gameObject);
+        if (!hit.IsUnityNull())
         {
             Instantiate(SpeechBubblePrefab, SpeechBubbleOffset, Quaternion.identity, hit.transform);
         }
+    }
+
+    private void Awake()
+    {
+        StartCoroutine(delayedActivation());
+    }
+
+    IEnumerator delayedActivation()
+    {
+        yield return new WaitForSeconds(1.0f);
+        interact();
     }
 }

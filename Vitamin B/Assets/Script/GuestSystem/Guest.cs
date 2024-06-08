@@ -19,13 +19,6 @@ public class Guest : MonoBehaviour, IGuest
     //[SerializeField]
     private Material[] _vibeMaterials;
 
-    //[SerializeField] 
-    private Mesh _hatAndHair;
-    //[SerializeField] 
-    private Mesh _glasses;
-    //[SerializeField] 
-    private Mesh _beard;
-
     [Header("Models")]
     [SerializeField] private GameObject[] _models;
 
@@ -33,6 +26,7 @@ public class Guest : MonoBehaviour, IGuest
     [SerializeField] private GameObject[] _hatAndHairReferences;
     [SerializeField] private GameObject[] _beardReferences;
     [SerializeField] private GameObject[] _neckReferences;
+    [SerializeField] private GameObject[] _glassesReferences;
     
     /* would be the dream
     [SerializeField]
@@ -40,7 +34,7 @@ public class Guest : MonoBehaviour, IGuest
     */
     
     
-    void Awake()
+    void Start()
     {
         GuestCustimization customization = GuestCustimization.Instance;
 
@@ -58,9 +52,31 @@ public class Guest : MonoBehaviour, IGuest
                 
                 _skinnedMeshRenderers[modelIndex].material = _vibeMaterials[(int)_vibecheck];
 
-                _hatAndHair = customization.ReceiveHatAndHair();
-                _beard = customization.ReceiveBeard();
-                _glasses = customization.ReceiveGlasses();
+                Mesh _hatAndHair = customization.ReceiveHatAndHair();
+                if (_hatAndHairReferences[modelIndex].TryGetComponent<MeshFilter>(out MeshFilter meshFilter))
+                {
+                    meshFilter.mesh = _hatAndHair;
+                }
+                /*
+                if (_hatAndHairReferences[modelIndex].TryGetComponent<MeshRenderer>(out MeshRenderer meshRenderer))
+                {
+                    meshRenderer.material = 
+                }
+                */
+                if (_beardReferences[modelIndex].TryGetComponent<MeshFilter>(out MeshFilter meshFilter2))
+                {
+                    meshFilter2.mesh = customization.ReceiveBeard();
+                }
+                
+                if (_glassesReferences[modelIndex].TryGetComponent<MeshFilter>(out MeshFilter meshFilter3))
+                {
+                    meshFilter3.mesh = customization.ReceiveGlasses();
+                }
+
+                if (_neckReferences[modelIndex].TryGetComponent<MeshFilter>(out MeshFilter meshFilter4))
+                {
+                    meshFilter4.mesh = customization.ReceiveNeck();
+                }
             }
         }
     }

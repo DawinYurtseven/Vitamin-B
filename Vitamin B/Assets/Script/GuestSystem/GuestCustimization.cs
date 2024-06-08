@@ -38,29 +38,29 @@ public class GuestCustimization : MonoBehaviour
 
     [SerializeField] private Mesh[] _hatsAndHair;
     [SerializeField] private Mesh[] _glasses;
-    [SerializeField] private Mesh[] _neck;
+    [SerializeField] private Mesh[] _necks;
     [SerializeField] private Mesh[] _beards;
     [Range(0.0f, 1.0f), SerializeField] private float _beardPartProbability;
 
     [Header("Voices")] 
-    [SerializeField] private AudioClip[] _voiceSet1;
-    [SerializeField] private AudioClip[] _voiceSet2;
-    [SerializeField] private AudioClip[] _voiceSet3;
-    [SerializeField] private AudioClip[] _voiceSet4;
-    [SerializeField] private AudioClip[] _voiceSet5;
+    [SerializeField] private AudioClip[] _voiceSet1 = Array.Empty<AudioClip>();
+    [SerializeField] private AudioClip[] _voiceSet2 = Array.Empty<AudioClip>();
+    [SerializeField] private AudioClip[] _voiceSet3 = Array.Empty<AudioClip>();
+    [SerializeField] private AudioClip[] _voiceSet4 = Array.Empty<AudioClip>();
+    [SerializeField] private AudioClip[] _voiceSet5 = Array.Empty<AudioClip>();
 
-    private AudioClip[][] _audioSets;
+    private List<AudioClip[]> _audioSets = new List<AudioClip[]>();
     
     
 
     // Start is called before the first frame update
     void Start()
     {
-        _audioSets[0] = _voiceSet1;
-        _audioSets[1] = _voiceSet2;
-        _audioSets[2] = _voiceSet3;
-        _audioSets[3] = _voiceSet4;
-        _audioSets[4] = _voiceSet5;
+        _audioSets.Add(_voiceSet1);
+        _audioSets.Add(_voiceSet2);
+        _audioSets.Add(_voiceSet3);
+        _audioSets.Add(_voiceSet4);
+        _audioSets.Add(_voiceSet5);
     }
 
     // Update is called once per frame
@@ -114,6 +114,16 @@ public class GuestCustimization : MonoBehaviour
         return _glasses[Random.Range(0,_glasses.Length)];
     }
     
+    public Mesh ReceiveNeck()
+    {
+        if (_necks.Length == 0)
+        {
+            Debug.LogError("no models assign in GuestCustomization");
+            return new Mesh();
+        }
+        return _necks[Random.Range(0,_necks.Length)];
+    }
+    
     public Mesh ReceiveBeard()
     {
         if (_beards.Length == 0)
@@ -138,6 +148,6 @@ public class GuestCustimization : MonoBehaviour
 
     public AudioClip[] ReceiveVoice()
     {
-        return _audioSets[Random.Range(0, _audioSets.Length)];
+        return _audioSets[Random.Range(0, _audioSets.Count)];
     }
 }
