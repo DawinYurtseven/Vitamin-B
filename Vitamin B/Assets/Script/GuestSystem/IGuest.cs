@@ -8,4 +8,6 @@ public interface IGuest
     public Dictionary<Guest, List<Topics>> Contacts { get; }
     
     public string Name { get; }
+    
+    public AudioClip[] Voice { get; }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class GuestCustimization : MonoBehaviour
@@ -33,11 +34,13 @@ public class GuestCustimization : MonoBehaviour
     [SerializeField] private string[] _names;
 
     [Header("Models")] 
-    [SerializeField] private Mesh[] _models;
+    [SerializeField] private int _numOfModels;
 
     [SerializeField] private Mesh[] _hatsAndHair;
     [SerializeField] private Mesh[] _glasses;
-    [SerializeField] private Mesh[] _beard;
+    [SerializeField] private Mesh[] _neck;
+    [SerializeField] private Mesh[] _beards;
+    [Range(0.0f, 1.0f), SerializeField] private float _beardPartProbability;
     
     
 
@@ -73,43 +76,50 @@ public class GuestCustimization : MonoBehaviour
         return _jobs[Random.Range(0, _jobs.Length)] + " " + _names[Random.Range(0, _names.Length)];
     }
 
-    public Mesh ReceiveModel()
+    public int ReceiveModel()
     {
-        if (_models.Length == 0)
-        {
-            Debug.LogError("no models assign in GuestCustomization");
-            return new Mesh();
-        }
-        return _models[Random.Range(0,_models.Length)];
+        return Random.Range(0,_numOfModels);
     }
     
     public Mesh ReceiveHatAndHair()
     {
-        if (_models.Length == 0)
+        if (_hatsAndHair.Length == 0)
         {
             Debug.LogError("no hat/hair assign in GuestCustomization");
             return new Mesh();
         }
-        return _hatsAndHair[Random.Range(0,_models.Length)];
+        return _hatsAndHair[Random.Range(0,_hatsAndHair.Length)];
     }
     
     public Mesh ReceiveGlasses()
     {
-        if (_models.Length == 0)
+        if (_glasses.Length == 0)
         {
             Debug.LogError("no models assign in GuestCustomization");
             return new Mesh();
         }
-        return _glasses[Random.Range(0,_models.Length)];
+        return _glasses[Random.Range(0,_glasses.Length)];
     }
     
     public Mesh ReceiveBeard()
     {
-        if (_models.Length == 0)
+        if (_beards.Length == 0)
         {
             Debug.LogError("no models assign in GuestCustomization");
             return new Mesh();
         }
-        return _beard[Random.Range(0,_models.Length)];
+
+        List<Mesh> beardParts = new List<Mesh>();
+
+        /*
+        foreach (Mesh beard in _beards)
+        {
+            if (Random.Range(0.0f, 1.0f) > _beardPartProbability)
+            {
+                beardParts.Add(beard);
+            }
+        }
+        */
+        return _beards[Random.Range(0,_beards.Length)];
     }
 }
