@@ -7,8 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: m_Base
+    second: {fileID: 2100000, guid: a912d5af191342b4594b573241618000, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_Floor
+    second: {fileID: 2100000, guid: 0d5f42d85080f444fb50b441bc334d05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: m_GlasWindows
     second: {fileID: 2100000, guid: 08b87967b45461c448971d06fdf8b67f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_Steel
+    second: {fileID: 2100000, guid: 6dfcd4f87baa39541b0565483b887f3c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
