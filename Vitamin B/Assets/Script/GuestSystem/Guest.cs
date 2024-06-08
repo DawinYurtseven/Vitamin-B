@@ -59,6 +59,7 @@ public class Guest : MonoBehaviour, IGuest
                 _skinnedMeshRenderers[modelIndex].material = _vibeMaterials[(int)_vibecheck];
 
                 _hatAndHair = customization.ReceiveHatAndHair();
+                _hatAndHairReferences
                 _beard = customization.ReceiveBeard();
                 _glasses = customization.ReceiveGlasses();
             }
