@@ -259,8 +259,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1123205895
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +531,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
->>>>>>> Stashed changes
 --- !u!1 &1641057667
 GameObject:
   m_ObjectHideFlags: 0
