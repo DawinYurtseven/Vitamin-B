@@ -14,4 +14,6 @@ public interface IGuest
     public void Interact();
     
     public AudioClip[] Voice { get; }
+    
+    public bool isBoss { get; }
 }
