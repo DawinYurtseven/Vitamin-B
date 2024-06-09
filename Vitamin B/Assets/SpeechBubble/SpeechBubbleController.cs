@@ -59,7 +59,7 @@ public class SpeechBubbleController : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
 
-        StartCoroutine(FillBubbleDelayed());
+        
     }
 
     private void Start()
@@ -70,6 +70,7 @@ public class SpeechBubbleController : MonoBehaviour
             if(newTarget.Vibecheck == VIBECHECK.NotPassed)
                 targets.Add(newTarget);
         }
+        StartCoroutine(FillBubbleDelayed());
         if(targets.Count == 0)
             StopSpeechBubble();
     }
@@ -127,6 +128,8 @@ public class SpeechBubbleController : MonoBehaviour
         {
             int blaIndex = getRandomBlaIndex();
             content.text = content.text + BlaList[blaIndex];
+            Debug.Log(blaIndex);
+            Debug.Log(BlaSounds.Length);
             source.PlayOneShot(BlaSounds[blaIndex]);
         }
         
