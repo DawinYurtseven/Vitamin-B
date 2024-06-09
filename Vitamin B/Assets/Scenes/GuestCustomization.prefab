@@ -62,9 +62,25 @@ MonoBehaviour:
   _jobs:
   - TechArt
   - HR
+  - Gameplay Programmer
+  - Engineer
+  - Scrum Master
+  - Product Manager
+  - 2D Artist
+  - 3D Artist
+  - AI Engineer
+  - CryptoBRO
+  - CryptoGIRL
+  - Arme Student
   _names:
   - A
   - B
+  - Die andere da
+  - C
+  - D
+  - Der eine da
+  - X
+  - Deine X
   _numOfModels: 3
   _hatsAndHair:
   - {fileID: -2432090755550338912, guid: 7d61b7e6bddcc10438c7f42ecf0b63cc, type: 3}
