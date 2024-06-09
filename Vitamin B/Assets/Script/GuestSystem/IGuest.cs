@@ -9,5 +9,11 @@ public interface IGuest
     
     public string Name { get; }
     
+    public bool SpeechBubbleActive { get; set; }
+
+    public void Interact();
+    
     public AudioClip[] Voice { get; }
+    
+    public bool isBoss { get; }
 }

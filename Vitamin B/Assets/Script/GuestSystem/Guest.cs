@@ -6,8 +6,15 @@ using UnityEngine.Serialization;
 [SelectionBase]
 public class Guest : MonoBehaviour, IGuest
 {
+    
+    [SerializeField] private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
+    
+    [SerializeField] private bool _isBoss = false;
+    
     [SerializeField]
     private List<Guest> _contacts = new List<Guest>();
+    
+    
     
     [Header("Models")]
     [SerializeField] private GameObject[] _models;
@@ -18,13 +25,18 @@ public class Guest : MonoBehaviour, IGuest
     [SerializeField] private GameObject[] _neckReferences;
     [SerializeField] private GameObject[] _glassesReferences;
     
-    
-    private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
     private AudioClip[] _voice;
     private Material[] _vibeMaterials;
     private string _name = "placeholder";
 
     private int modelIndex;
+    
+    [SerializeField]
+    private GameObject SpeechBubblePrefab;
+    private GameObject SpeechBubbleRef;
+    private bool _speechBubbleActive = false;
+    [SerializeField] 
+    private Vector3 SpeechBubbleOffset = new Vector3(-1.25f,2.25f,0f);
     
     
     void Start()
@@ -152,4 +164,39 @@ public class Guest : MonoBehaviour, IGuest
         }
     }
 
+    public void Interact()
+    {
+        if (!_speechBubbleActive)
+        {
+            SpeechBubbleRef = Instantiate(SpeechBubblePrefab, SpeechBubbleOffset, Quaternion.identity, this.transform);
+            SpeechBubbleRef.GetComponent<SpeechBubbleController>().target = this;
+            _speechBubbleActive = true;
+        }
+        else
+        {
+            SpeechBubbleRef.GetComponent<SpeechBubbleController>().Interact();
+        }
+    }
+    
+    public bool SpeechBubbleActive
+    {
+        get
+        {
+            return _speechBubbleActive;
+        }
+        set
+        {
+            _speechBubbleActive = value;
+        }
+    }
+
+    public bool isBoss
+    {
+        get
+        {
+            return _isBoss;
+        }
+    }
+    
+    
 }

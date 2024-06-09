@@ -161,6 +161,7 @@ public class SpeechBubbleController : MonoBehaviour
     public void StopSpeechBubble()
     {
         StopAllCoroutines();
+        target.SpeechBubbleActive = false;
         Destroy(this.gameObject);
     }
 

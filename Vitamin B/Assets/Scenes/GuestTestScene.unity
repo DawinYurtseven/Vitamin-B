@@ -152,10 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionradius: 0.5
-  raycastlength: 3
-  SpeechBubblePrefab: {fileID: 1054478281229324122, guid: 8e5f62062a934a84195df1f32c4ea8e8,
-    type: 3}
-  SpeechBubbleOffset: {x: -1.25, y: 2.25, z: 0}
+  raycastlength: 10
 --- !u!4 &201478893
 Transform:
   m_ObjectHideFlags: 0
@@ -933,7 +930,7 @@ PrefabInstance:
     - target: {fileID: 3549593803943507463, guid: 0305de4c7d44689468e477a50beda7ad,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.64
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 3549593803943507463, guid: 0305de4c7d44689468e477a50beda7ad,
         type: 3}
