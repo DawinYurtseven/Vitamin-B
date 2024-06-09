@@ -1050,6 +1050,7 @@ MonoBehaviour:
   SpeechBubblePrefab: {fileID: 1054478281229324122, guid: 8e5f62062a934a84195df1f32c4ea8e8,
     type: 3}
   SpeechBubbleOffset: {x: -1.75, y: 3, z: 0}
+--- !u!1 &8525183324657569908
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1373,22 +1374,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866666021909216657, guid: 93dd8e81c9d072b488b4402668d6d0f3,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 93212bc411b6cab408c51d298cb4f13d, type: 2}
-    - target: {fileID: 5866666021909216657, guid: 93dd8e81c9d072b488b4402668d6d0f3,
-        type: 3}
-      propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-        'mixamorig:LeftHandIndex1'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
-        'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
-        'mixamorig:RightFoot'\n\tTransform 'mixamorig:Head'\n\tand more ...\n\tFrom
-        animation clip 'BusinessIdle'"
       objectReference: {fileID: 0}
     - target: {fileID: 8817898888258712963, guid: 93dd8e81c9d072b488b4402668d6d0f3,
         type: 3}
@@ -1837,22 +1822,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.01
       objectReference: {fileID: 0}
-    - target: {fileID: 5866666021909216657, guid: b2d527628e5b1904099e044c8f1a32fd,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 93212bc411b6cab408c51d298cb4f13d, type: 2}
-    - target: {fileID: 5866666021909216657, guid: b2d527628e5b1904099e044c8f1a32fd,
-        type: 3}
-      propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-        'mixamorig:LeftHandIndex1'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
-        'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
-        'mixamorig:RightFoot'\n\tTransform 'mixamorig:Head'\n\tand more ...\n\tFrom
-        animation clip 'BusinessIdle'"
-      objectReference: {fileID: 0}
     - target: {fileID: 8817898888258712963, guid: b2d527628e5b1904099e044c8f1a32fd,
         type: 3}
       propertyPath: m_Layer
@@ -2194,7 +2163,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b8ad4f98b3002074591b7166cd1669b5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1759389204330600281}
+      addedObject: {fileID: 4196441129550184369}
   m_SourcePrefab: {fileID: 100100000, guid: b8ad4f98b3002074591b7166cd1669b5, type: 3}
 --- !u!137 &980093430884265480 stripped
 SkinnedMeshRenderer:
@@ -2226,7 +2195,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7446381459196135635}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1759389204330600281
+--- !u!95 &4196441129550184369
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -2235,20 +2204,14 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7752865042160022914}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b8ad4f98b3002074591b7166cd1669b5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 93212bc411b6cab408c51d298cb4f13d, type: 2}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 70406c36d635b614c8b246cf8262397b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-    'mixamorig:LeftHandIndex1'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
-    'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
-    'mixamorig:RightFoot'\n\tTransform 'mixamorig:Head'\n\tand more ...\n\tFrom animation
-    clip 'BusinessIdle'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
