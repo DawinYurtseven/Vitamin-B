@@ -2006,7 +2006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &709031844
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4554,7 +4554,7 @@ PrefabInstance:
     - target: {fileID: 792781360272511003, guid: b79b949dbcc3c314184b24c9558903dc,
         type: 3}
       propertyPath: m_Volume
-      value: 0.545
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6251863544212435527, guid: b79b949dbcc3c314184b24c9558903dc,
         type: 3}
@@ -4847,11 +4847,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8234776779880263999, guid: 0b49c78cfc602b74f8516d2210d125d3,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
