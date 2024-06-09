@@ -1073,6 +1073,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8475446411323383602, guid: 0305de4c7d44689468e477a50beda7ad,
         type: 3}
+      propertyPath: _vibecheck
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8475446411323383602, guid: 0305de4c7d44689468e477a50beda7ad,
+        type: 3}
       propertyPath: _contacts.Array.size
       value: 3
       objectReference: {fileID: 0}
