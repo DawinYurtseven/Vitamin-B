@@ -84,7 +84,6 @@ public class SpeechBubbleController : MonoBehaviour
             {
                 StopAllCoroutines();
                 content.text = "";
-                wordCount = 0;
                 StartCoroutine(FillBubbleError(keyword));
             }
             else
@@ -186,6 +185,7 @@ public class SpeechBubbleController : MonoBehaviour
     public void StopSpeechBubble()
     {
         StopAllCoroutines();
+        target.SpeechBubbleActive = false;
         target.SpeechBubbleRef = null;
         Destroy(this.gameObject);
     }

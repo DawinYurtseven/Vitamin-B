@@ -392,26 +392,6 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.011128649
       objectReference: {fileID: 0}
-    - target: {fileID: 7432954066138221316, guid: c9ef1e5e4b3ccdd45b21818355ef1a3d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1614293559}
-    - target: {fileID: 7432954066138221316, guid: c9ef1e5e4b3ccdd45b21818355ef1a3d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: interact
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432954066138221316, guid: c9ef1e5e4b3ccdd45b21818355ef1a3d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Interact, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432954066138221316, guid: c9ef1e5e4b3ccdd45b21818355ef1a3d,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7745187917264885380, guid: c9ef1e5e4b3ccdd45b21818355ef1a3d,
         type: 3}
       propertyPath: m_Name
