@@ -543,6 +543,21 @@ MonoBehaviour:
   - {fileID: -2432090755550338912, guid: b151562292b51b340b8a0acd30dfa809, type: 3}
   - {fileID: -2432090755550338912, guid: e045738f584f1e243ad036de5a2422fe, type: 3}
   _beardPartProbability: 0.309
+  _hatHairBeardMats:
+  - {fileID: 2100000, guid: 33e6e88936fe7f44e86abad0cf25a3bb, type: 2}
+  - {fileID: 2100000, guid: 34b505abe81411940a547ee65e547c12, type: 2}
+  - {fileID: 2100000, guid: dc36a830605783a44970d1b335b15b7b, type: 2}
+  - {fileID: 2100000, guid: a0768cadf932a4640acf0f8163a94aa0, type: 2}
+  - {fileID: 2100000, guid: e132137c6718659459d0db69ba73b502, type: 2}
+  - {fileID: 2100000, guid: e12ce5191eb7f3543afb819a2787af41, type: 2}
+  - {fileID: 2100000, guid: 32c4c3e21175e4c42b3925fd79621b4a, type: 2}
+  - {fileID: 2100000, guid: fd8ac99c689d048489c855720a95afb7, type: 2}
+  _accessoryMats:
+  - {fileID: 2100000, guid: 1a59ccc9671212048b70879c284c9dea, type: 2}
+  - {fileID: 2100000, guid: d6ab7a48e0b0a014b950b0ce0e7df34e, type: 2}
+  - {fileID: 2100000, guid: 468c2eabe9c0cdd4894517a3fcd52fd8, type: 2}
+  - {fileID: 2100000, guid: 36e0838f42851574f943b030fa49e10f, type: 2}
+  - {fileID: 2100000, guid: 142b9c2e3e544d54baf6c3dbc65b6e45, type: 2}
   _voiceSet1:
   - {fileID: 8300000, guid: 5202266fa0445c84ab6d80970c4ea77a, type: 3}
   - {fileID: 8300000, guid: edb716d06e3b5144499813c4bef27e46, type: 3}

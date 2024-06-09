@@ -21,6 +21,12 @@ public class GuestCustimization : MonoBehaviour
         { 
             Instance = this; 
         }
+        
+        _audioSets.Add(_voiceSet1);
+        _audioSets.Add(_voiceSet2);
+        _audioSets.Add(_voiceSet3);
+        _audioSets.Add(_voiceSet4);
+        _audioSets.Add(_voiceSet5);
     }
 
     [Header("VibeMaterials")]
@@ -42,6 +48,10 @@ public class GuestCustimization : MonoBehaviour
     [SerializeField] private Mesh[] _beards;
     [Range(0.0f, 1.0f), SerializeField] private float _beardPartProbability;
 
+    [Header("ModelMaterials")] 
+    [SerializeField] private Material[] _hatHairBeardMats;
+    [SerializeField] private Material[] _accessoryMats;
+
     [Header("Voices")] 
     [SerializeField] private AudioClip[] _voiceSet1 = Array.Empty<AudioClip>();
     [SerializeField] private AudioClip[] _voiceSet2 = Array.Empty<AudioClip>();
@@ -50,24 +60,6 @@ public class GuestCustimization : MonoBehaviour
     [SerializeField] private AudioClip[] _voiceSet5 = Array.Empty<AudioClip>();
 
     private List<AudioClip[]> _audioSets = new List<AudioClip[]>();
-    
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        _audioSets.Add(_voiceSet1);
-        _audioSets.Add(_voiceSet2);
-        _audioSets.Add(_voiceSet3);
-        _audioSets.Add(_voiceSet4);
-        _audioSets.Add(_voiceSet5);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public Material[] ReceiveMaterials()
     {
@@ -149,5 +141,15 @@ public class GuestCustimization : MonoBehaviour
     public AudioClip[] ReceiveVoice()
     {
         return _audioSets[Random.Range(0, _audioSets.Count)];
+    }
+
+    public Material ReceiveHatAndHairMaterial()
+    {
+        return _hatHairBeardMats[Random.Range(0, _hatHairBeardMats.Length)];
+    }
+
+    public Material ReceiveAccessoryMaterial()
+    {
+        return _accessoryMats[Random.Range(0, _accessoryMats.Length)];
     }
 }

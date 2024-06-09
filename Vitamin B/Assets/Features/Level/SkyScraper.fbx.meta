@@ -32,6 +32,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: m_SoftLight
+    second: {fileID: 2100000, guid: 1d94e28825bd9f240817eca84f706cee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: m_Steel
     second: {fileID: 2100000, guid: 6dfcd4f87baa39541b0565483b887f3c, type: 2}
   - first:
