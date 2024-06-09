@@ -36,7 +36,8 @@ public class SpeechBubbleController : MonoBehaviour
     private string[] BlaList = 
         { "Bla ", "Bla? ", "Bla! ", "BlaBla ", "Blaaaaa "};
 
-    [SerializeField] private AudioClip[] BlaSounds;
+    [SerializeField]
+    private AudioClip[] BlaSounds;
     
     private string keyword = "";
     private int wordCount = 0;
@@ -48,14 +49,22 @@ public class SpeechBubbleController : MonoBehaviour
     [SerializeField]
     private TextMeshPro content;
 
-    private IGuest target;
+    [SerializeField]
+    public IGuest target;
    
     
     private void Awake()
     {
         source = GetComponent<AudioSource>();
         StartCoroutine(FillBubbleDelayed());
+        
         //StartCoroutine(FillBubbleError("Bitcoin"));
+    }
+
+    private void Start()
+    {
+        BlaSounds = target.Voice;
+        Debug.Log(target);
     }
 
     public void Interact()

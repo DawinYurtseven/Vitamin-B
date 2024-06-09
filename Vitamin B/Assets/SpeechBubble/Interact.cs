@@ -10,6 +10,8 @@ public class Interact : MonoBehaviour
     private float interactionradius;
     [SerializeField]
     private float raycastlength;
+    
+    private LayerMask mask;
     //[SerializeField]
     //private float CastOffset;
 
@@ -21,11 +23,14 @@ public class Interact : MonoBehaviour
     public void interact()
     {
         RaycastHit hit;
-        Physics.SphereCast(transform.position, interactionradius, transform.forward, out hit, raycastlength, 3);
+        //Debug.Log(Physics.Raycast(transform.position, transform.forward, out hit, raycastlength, ~4));
+        Debug.Log(Physics.SphereCast(transform.position, interactionradius,transform.forward, out hit, raycastlength, ~4));
+        Debug.Log(hit.transform);
         //Debug.Log(hit.transform.gameObject);
-        if (!hit.IsUnityNull())
+        if (hit.transform != null)
         {
-            Instantiate(SpeechBubblePrefab, SpeechBubbleOffset, Quaternion.identity, hit.transform);
+            GameObject temp = Instantiate(SpeechBubblePrefab, SpeechBubbleOffset, Quaternion.identity, hit.transform);
+            temp.GetComponent<SpeechBubbleController>().target = hit.transform.GetComponent<IGuest>();
         }
     }
 
@@ -39,4 +44,5 @@ public class Interact : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         interact();
     }
+    
 }
