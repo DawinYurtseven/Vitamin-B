@@ -49,6 +49,7 @@ public class SpeechBubbleController : MonoBehaviour
     [SerializeField]
     private TextMeshPro content;
 
+    [SerializeField]
     public IGuest target;
    
     
@@ -56,8 +57,14 @@ public class SpeechBubbleController : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         StartCoroutine(FillBubbleDelayed());
-        BlaSounds = target.Voice;
+        
         //StartCoroutine(FillBubbleError("Bitcoin"));
+    }
+
+    private void Start()
+    {
+        BlaSounds = target.Voice;
+        Debug.Log(target);
     }
 
     public void Interact()

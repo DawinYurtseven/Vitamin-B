@@ -62,12 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textFillSpeedMin: 1
   textFillSpeedMax: 1
-  BlaSounds:
-  - {fileID: 8300000, guid: 5202266fa0445c84ab6d80970c4ea77a, type: 3}
-  - {fileID: 8300000, guid: edb716d06e3b5144499813c4bef27e46, type: 3}
-  - {fileID: 8300000, guid: 034e8d13925605248b63e1dd6ac6240a, type: 3}
-  - {fileID: 8300000, guid: 2ca17e6a5ba2ad94f8d55e4e007e77f4, type: 3}
-  - {fileID: 8300000, guid: b405023fb18f6ed4893f2d20ee0b32af, type: 3}
+  BlaSounds: []
   source: {fileID: 0}
   content: {fileID: 2987889407372050194}
 --- !u!82 &9070191300590164977
