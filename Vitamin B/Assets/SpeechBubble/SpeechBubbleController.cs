@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public enum Topics
@@ -85,6 +86,10 @@ public class SpeechBubbleController : MonoBehaviour
             }
             else
             {
+                if (target.isBoss && target.Vibecheck == VIBECHECK.Surpassed)
+                {
+                    SceneManager.LoadScene("MainMenu");
+                }
                 targets[currentContact].Vibecheck = VIBECHECK.Passed;
                 currentContact++;
                 if (currentContact >= targets.Count)
