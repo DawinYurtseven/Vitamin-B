@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124073937667696005}
-  m_Mesh: {fileID: -2432090755550338912, guid: d6cbdb0a0bc82a54c93a87dc88d0eca6, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &2825116190101722441
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 846496917684710757}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000002458692, y: 0.0000000021718305, z: -8.30335e-10, w: 1}
-  m_LocalPosition: {x: 0.003, y: -0.79, z: 0.4}
+  m_LocalPosition: {x: 0.003, y: -0.79, z: 0.462}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -335,7 +335,7 @@ Transform:
   m_GameObject: {fileID: 2521782809174601536}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000052154057, y: -2.4733443e-11, z: -4.310517e-11, w: 1}
-  m_LocalPosition: {x: 0.0017927343, y: -1.0853757, z: 0.38264838}
+  m_LocalPosition: {x: 0.002, y: -1.085, z: 0.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -514,7 +514,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867479542941769323}
-  m_Mesh: {fileID: -2432090755550338912, guid: 57e885a83a5c27f44aa8721f5334fd00, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 7d61b7e6bddcc10438c7f42ecf0b63cc, type: 3}
 --- !u!23 &6961304691676913931
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -667,7 +667,7 @@ Transform:
   m_GameObject: {fileID: 5046070412385858105}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000052154057, y: -2.4733443e-11, z: -4.310517e-11, w: 1}
-  m_LocalPosition: {x: 7.23, y: -0.101, z: -0.15}
+  m_LocalPosition: {x: -0, y: -1.064, z: 0.343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -680,7 +680,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5046070412385858105}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: -2432090755550338912, guid: fa5fd3c9bb141134888d4266484c5f5a, type: 3}
 --- !u!23 &3305378626663513817
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -750,7 +750,7 @@ Transform:
   m_GameObject: {fileID: 5272818820732148148}
   serializedVersion: 2
   m_LocalRotation: {x: -2.3283059e-10, y: 7.8469634e-11, z: -4.5439574e-10, w: 1}
-  m_LocalPosition: {x: -4.8391943, y: -1.0761005, z: 0.256677}
+  m_LocalPosition: {x: 0.0068, y: -1.0758, z: 0.3079}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -763,7 +763,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5272818820732148148}
-  m_Mesh: {fileID: -2432090755550338912, guid: e045738f584f1e243ad036de5a2422fe, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1753293658443951079
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -847,7 +847,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6024401319498631423}
-  m_Mesh: {fileID: -2432090755550338912, guid: caf662a995631bb45b61a2781493b424, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &3503223943936828514
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -917,7 +917,7 @@ Transform:
   m_GameObject: {fileID: 6557202169846043844}
   serializedVersion: 2
   m_LocalRotation: {x: -2.3283059e-10, y: 7.8469634e-11, z: -4.5439574e-10, w: 1}
-  m_LocalPosition: {x: 7.23, y: -0.101, z: -0.15}
+  m_LocalPosition: {x: -0.001, y: -1.072, z: 0.351}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1021,8 +1021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6b795bf467b8f4d83aa3ba917c3c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vibecheck: 1
-  _name: placeholder
   _contacts: []
   _models:
   - {fileID: 7752865042160022914}
@@ -1048,6 +1046,7 @@ MonoBehaviour:
   - {fileID: 2327509070130234816}
   - {fileID: 2521782809174601536}
   - {fileID: 124073937667696005}
+  _name: placeholder
 --- !u!1 &8525183324657569908
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,20 +5,9 @@ using UnityEngine.Serialization;
 
 public class Guest : MonoBehaviour, IGuest
 {
-    [Header("Personality")]
-    [SerializeField]
-    private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
-
-    [SerializeField] private string _name = "placeholder";
-    
     [SerializeField]
     private List<Guest> _contacts = new List<Guest>();
-
-    //[SerializeField]
-    private AudioClip[] _voice;
-    //[SerializeField]
-    private Material[] _vibeMaterials;
-
+    
     [Header("Models")]
     [SerializeField] private GameObject[] _models;
 
@@ -28,17 +17,24 @@ public class Guest : MonoBehaviour, IGuest
     [SerializeField] private GameObject[] _neckReferences;
     [SerializeField] private GameObject[] _glassesReferences;
     
-    /* would be the dream
-    [SerializeField]
-    private Dictionary<Guest, List<Topics>> _contacts = new Dictionary<Guest, List<Topics>>();
-    */
+    
+    private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
+    private AudioClip[] _voice;
+    private Material[] _vibeMaterials;
+    private string _name = "placeholder";
+
+    private int modelIndex;
     
     
     void Start()
     {
         GuestCustimization customization = GuestCustimization.Instance;
+        
+        _vibeMaterials = customization.ReceiveMaterials();
+        _name = customization.ReceiveName();
+        _voice = customization.ReceiveVoice();
 
-        int modelIndex = customization.ReceiveModel();
+        modelIndex = customization.ReceiveModel();
         for (int i = 0; i < _models.Length; i++)
         {
             if (i != modelIndex)
@@ -47,52 +43,49 @@ public class Guest : MonoBehaviour, IGuest
             }
             else
             {
-                _vibeMaterials = customization.ReceiveMaterials();
-                _name = customization.ReceiveName();
-                
-                _skinnedMeshRenderers[modelIndex].material = _vibeMaterials[(int)_vibecheck];
+                Material startMat = _vibeMaterials[(int)_vibecheck];
+                _skinnedMeshRenderers[modelIndex].material = startMat;
 
-                if (_hatAndHairReferences[modelIndex].TryGetComponent<MeshFilter>(out MeshFilter meshFilter))
+                MeshRenderer meshRenderer;
+                MeshFilter meshFilter;
+
+                if (_hatAndHairReferences[modelIndex].TryGetComponent<MeshFilter>(out meshFilter))
                 {
                     meshFilter.mesh = customization.ReceiveHatAndHair();
                 }
-                /*
-                Material _hatAndHairMaterial = customization.ReceiveHatAndHairMaterial();
-                if (_hatAndHairReferences[modelIndex].TryGetComponent<MeshRenderer>(out MeshRenderer meshRenderer))
+                if (_hatAndHairReferences[modelIndex].TryGetComponent<MeshRenderer>(out meshRenderer))
                 {
-                    meshRenderer.material = _hatAndHairMaterial;
+                    meshRenderer.material = startMat;
                 }
-                */
-                
-                
-                if (_beardReferences[modelIndex].TryGetComponent<MeshFilter>(out MeshFilter meshFilter2))
+                //____________
+                if (_beardReferences[modelIndex].TryGetComponent<MeshFilter>(out meshFilter))
                 {
-                    meshFilter2.mesh = customization.ReceiveBeard();
+                    meshFilter.mesh = customization.ReceiveBeard();
                 }
-                /*
-                if (_beardReferences[modelIndex].TryGetComponent<MeshRenderer>(out MeshRenderer meshRenderer))
+                if (_beardReferences[modelIndex].TryGetComponent<MeshRenderer>(out meshRenderer))
                 {
-                    meshRenderer.material = _hatAndHairMaterial;
+                    meshRenderer.material = startMat;
                 }
-                */
-                
-                if (_glassesReferences[modelIndex].TryGetComponent<MeshFilter>(out MeshFilter meshFilter3))
+                //_____________
+                if (_glassesReferences[modelIndex].TryGetComponent<MeshFilter>(out meshFilter))
                 {
-                    meshFilter3.mesh = customization.ReceiveGlasses();
+                    meshFilter.mesh = customization.ReceiveGlasses();
                 }
-
-                if (_neckReferences[modelIndex].TryGetComponent<MeshFilter>(out MeshFilter meshFilter4))
+                if (_glassesReferences[modelIndex].TryGetComponent<MeshRenderer>(out meshRenderer))
                 {
-                    meshFilter4.mesh = customization.ReceiveNeck();
+                    meshRenderer.material = startMat;
+                }
+                //____________
+                if (_neckReferences[modelIndex].TryGetComponent<MeshFilter>(out meshFilter))
+                {
+                    meshFilter.mesh = customization.ReceiveNeck();
+                }
+                if (_neckReferences[modelIndex].TryGetComponent<MeshRenderer>(out meshRenderer))
+                {
+                    meshRenderer.material = startMat;
                 }
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public VIBECHECK Vibecheck
@@ -104,9 +97,26 @@ public class Guest : MonoBehaviour, IGuest
         set
         {
             _vibecheck = value;
-            if (this.TryGetComponent<SkinnedMeshRenderer>(out SkinnedMeshRenderer meshRenderer))
+            GuestCustimization customization = GuestCustimization.Instance;
+            Material hatAndHairMaterial = customization.ReceiveHatAndHairMaterial();
+            Material accessoryMaterial = customization.ReceiveAccessoryMaterial();
+            MeshRenderer meshRenderer;
+            _skinnedMeshRenderers[modelIndex].material = _vibeMaterials[(int)_vibecheck];
+            if (_hatAndHairReferences[modelIndex].TryGetComponent<MeshRenderer>(out meshRenderer))
             {
-                meshRenderer.material = _vibeMaterials[(int)value];
+                meshRenderer.material = hatAndHairMaterial;
+            }
+            if (_beardReferences[modelIndex].TryGetComponent<MeshRenderer>(out meshRenderer))
+            {
+                meshRenderer.material = hatAndHairMaterial;
+            }
+            if (_glassesReferences[modelIndex].TryGetComponent<MeshRenderer>(out  meshRenderer))
+            {
+                meshRenderer.material = accessoryMaterial;
+            }
+            if (_neckReferences[modelIndex].TryGetComponent<MeshRenderer>(out meshRenderer))
+            {
+                meshRenderer.material = accessoryMaterial;
             }
         }
     }
