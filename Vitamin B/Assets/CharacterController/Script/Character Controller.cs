@@ -1,8 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-[RequireComponent(typeof(Rigidbody))]
 public class CharacterController : MonoBehaviour
 {
     #region Values
@@ -13,26 +13,21 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float uprightTorque;
     [SerializeField] private AnimationCurve uprightTorqueCurve, directionalAngleCurve;
     [SerializeField] private float cameraXSpeed, cameraYSpeed;
-
+    [SerializeField] private Animator _animator;
+    
     #endregion
 
     #region HelperValues
-
-    private Rigidbody _rb;
+    
     private Vector2 _movementVector;
     private float _currentSpeed;
 
     #endregion
 
-    private void Awake()
-    {
-        _rb = GetComponent<Rigidbody>();
-    }
-
     private void Update()
     {
         Move();
-        Balance();
+        //Balance();
     }
 
 
@@ -44,10 +39,12 @@ public class CharacterController : MonoBehaviour
         {
             _movementVector = context.ReadValue<Vector2>();
             _currentSpeed = Mathf.Clamp(_currentSpeed + Time.deltaTime * 5, 0, speed);
+            _animator.SetBool("Walking", true);
         }
         else if (context.canceled)
         {
             _movementVector = Vector2.zero;
+            _animator.SetBool("Walking", false);
         }
     }
 
@@ -71,7 +68,6 @@ public class CharacterController : MonoBehaviour
         if (context.performed)
         {
             Vector2 delta = context.ReadValue<Vector2>().normalized;
-            Debug.Log(delta.x * cameraXSpeed * Time.deltaTime);
 
             followTarget.transform.Rotate(Vector3.up, delta.x * cameraXSpeed * Time.deltaTime);
             followTarget.transform.Rotate(Vector3.right, delta.y * cameraYSpeed * Time.deltaTime);
@@ -102,7 +98,6 @@ public class CharacterController : MonoBehaviour
         if (_movementVector.magnitude == 0)
         {
             _currentSpeed = Mathf.Clamp(_currentSpeed - Time.deltaTime * 5, 0, speed);
-            _rb.angularVelocity = Vector3.zero;
         }
         else
         {
@@ -114,7 +109,10 @@ public class CharacterController : MonoBehaviour
 
         Vector3 moveDirection = new Vector3(_movementVector.x, 0, _movementVector.y);
         Vector3 move = transform.TransformDirection(moveDirection);
-        _rb.velocity = Vector3.Lerp(_rb.velocity, move * _currentSpeed, Time.deltaTime * 5);
+
+        transform.position =
+            Vector3.Lerp(transform.position, transform.position + move * _currentSpeed, Time.deltaTime);
+        
     }
 
     void Balance()
@@ -123,19 +121,14 @@ public class CharacterController : MonoBehaviour
         balancePer = uprightTorqueCurve.Evaluate(balancePer);
         var rot = Quaternion.FromToRotation(transform.up, Vector3.up).normalized;
 
-        _rb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * (uprightTorque * balancePer));
 
         var angle = (followTarget.transform.rotation.eulerAngles.y - transform.rotation.eulerAngles.y) / 180;
 
         if (angle > 0.5)
         {
-            Debug.Log($"{angle} with {followTarget.transform.rotation.eulerAngles.y} and {transform.rotation.eulerAngles.y}");
             var percent = directionalAngleCurve.Evaluate(angle);
             if (angle < 0) percent *= -1;
-            _rb.AddRelativeTorque(0, percent * 500, 0);
         }
-
-        
     }
 }
 
