@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
     }
 
     public void StartGame() {
-        SceneManager.LoadScene("SampleMenuScene");
+        SceneManager.LoadScene("ArtScene");
     }
     public void ChangeVolume(Slider slider) {
         mainAudioMixer.SetFloat("MasterVolume", slider.value);
