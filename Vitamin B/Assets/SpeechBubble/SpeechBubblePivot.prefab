@@ -60,8 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06e2ba7ec57f7a49b4fe8ec1d133409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textFillSpeedMin: 1
-  textFillSpeedMax: 1
+  textFillSpeedMin: 0.3
+  textFillSpeedMax: 0.9
   BlaSounds: []
   source: {fileID: 0}
   content: {fileID: 2987889407372050194}
