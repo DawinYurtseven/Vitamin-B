@@ -1047,6 +1047,9 @@ MonoBehaviour:
   - {fileID: 2327509070130234816}
   - {fileID: 2521782809174601536}
   - {fileID: 124073937667696005}
+  SpeechBubblePrefab: {fileID: 1054478281229324122, guid: 8e5f62062a934a84195df1f32c4ea8e8,
+    type: 3}
+  SpeechBubbleOffset: {x: -1.75, y: 3, z: 0}
 --- !u!1 &8525183324657569908
 GameObject:
   m_ObjectHideFlags: 0
