@@ -167,6 +167,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4241664727119880379, guid: 8d110aa5a8580834abed99b012573adc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -3466795921840090572, guid: 8d110aa5a8580834abed99b012573adc,
         type: 3}
       propertyPath: m_Convex
@@ -190,7 +195,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8d110aa5a8580834abed99b012573adc,
         type: 3}
       propertyPath: m_Name
-      value: SkyScraper
+      value: SkyScraper Level
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8d110aa5a8580834abed99b012573adc,
         type: 3}
@@ -212,6 +217,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cfe1ecb5bd9dc294e85112be3ef967bf, type: 2}
+    - target: {fileID: 4681074358967201407, guid: 8d110aa5a8580834abed99b012573adc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4681074358967201407, guid: 8d110aa5a8580834abed99b012573adc,
         type: 3}
       propertyPath: m_StaticEditorFlags
