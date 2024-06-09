@@ -23,10 +23,7 @@ public class Interact : MonoBehaviour
     public void interact()
     {
         RaycastHit hit;
-        //Debug.Log(Physics.Raycast(transform.position, transform.forward, out hit, raycastlength, ~4));
-        Debug.Log(Physics.SphereCast(transform.position, interactionradius,transform.forward, out hit, raycastlength, ~4));
-        Debug.Log(hit.transform);
-        //Debug.Log(hit.transform.gameObject);
+        Physics.SphereCast(transform.position, interactionradius,transform.forward, out hit, raycastlength, ~4);
         if (hit.transform != null)
         {
             GameObject temp = Instantiate(SpeechBubblePrefab, SpeechBubbleOffset, Quaternion.identity, hit.transform);
