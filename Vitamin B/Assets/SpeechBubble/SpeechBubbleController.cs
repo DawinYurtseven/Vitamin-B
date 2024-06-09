@@ -90,7 +90,16 @@ public class SpeechBubbleController : MonoBehaviour
                 if (currentContact >= targets.Count)
                 {
                     target.Vibecheck = VIBECHECK.Surpassed;
-                    StopSpeechBubble();
+                    if (target.isBoss)
+                    {
+                        StopAllCoroutines();
+                        StartCoroutine(FillBubbleOffer());
+                    }
+                    else
+                    {
+                                                
+                        StopSpeechBubble();
+                    }
                 }
 
             }
@@ -128,8 +137,6 @@ public class SpeechBubbleController : MonoBehaviour
         {
             int blaIndex = getRandomBlaIndex();
             content.text = content.text + BlaList[blaIndex];
-            Debug.Log(blaIndex);
-            Debug.Log(BlaSounds.Length);
             source.PlayOneShot(BlaSounds[blaIndex]);
         }
         
@@ -155,6 +162,16 @@ public class SpeechBubbleController : MonoBehaviour
         else
         {
             StartCoroutine(FillBubbleError(errortext));
+        }
+    }
+
+    IEnumerator FillBubbleOffer()
+    {
+        string[] offer = { "do ", "you ", "want ", "a ", "<color=\"red\"> Job?</color>" };
+        foreach (var text in offer)
+        {
+            yield return new WaitForSeconds(Random.Range(textFillSpeedMin, textFillSpeedMax));
+            content.text = content.text + text;
         }
     }
 
