@@ -9,8 +9,6 @@ public interface IGuest
     
     public string Name { get; }
     
-    public bool SpeechBubbleActive { get; set; }
-    
     public GameObject SpeechBubbleRef { get; set; }
 
     public void Interact();

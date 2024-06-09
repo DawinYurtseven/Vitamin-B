@@ -166,30 +166,18 @@ public class Guest : MonoBehaviour, IGuest
 
     public void Interact()
     {
-        if (!_speechBubbleActive && _vibecheck == VIBECHECK.Passed)
+        if (!_speechBubbleRef && _vibecheck == VIBECHECK.Passed)
         {
             SpeechBubbleRef = Instantiate(SpeechBubblePrefab, this.transform.position + SpeechBubbleOffset, Quaternion.identity, this.transform);
             SpeechBubbleRef.GetComponent<SpeechBubbleController>().target = this;
-            _speechBubbleActive = true;
         }
         else
         {
-            SpeechBubbleRef.GetComponent<SpeechBubbleController>().Interact();
+            if(_speechBubbleRef)
+                SpeechBubbleRef.GetComponent<SpeechBubbleController>().Interact();
         }
     }
-    
-    public bool SpeechBubbleActive
-    {
-        get
-        {
-            return _speechBubbleActive;
-        }
-        set
-        {
-            _speechBubbleActive = value;
-        }
-    }
-    
+
     public GameObject SpeechBubbleRef
     {
         get
