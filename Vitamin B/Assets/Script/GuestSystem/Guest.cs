@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+[SelectionBase]
 public class Guest : MonoBehaviour, IGuest
 {
     [SerializeField]

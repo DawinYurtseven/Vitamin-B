@@ -34,7 +34,7 @@ public class SpeechBubbleController : MonoBehaviour
     private float textFillSpeedMax = 1.0f;
 
     private string[] BlaList = 
-        { "Bla ", "Bla? ", "Bla! ", "BlaBla ", "Blaaaaa "};
+        { "Bla ", "Bla? ", "Bla! ", "BlaBla ", "Blaaa "};
 
     [SerializeField]
     private AudioClip[] BlaSounds;
@@ -44,27 +44,35 @@ public class SpeechBubbleController : MonoBehaviour
     private int wordMax = 8;
     private int NoTopicsLength = Enum.GetNames(typeof(NoTopics)).Length;
 
+    private int currentContact = 0;
+    private List<Guest> targets = new List<Guest>();
+
     [SerializeField] private AudioSource source;
     
     [SerializeField]
     private TextMeshPro content;
-
-    [SerializeField]
+    
     public IGuest target;
    
     
     private void Awake()
     {
         source = GetComponent<AudioSource>();
-        StartCoroutine(FillBubbleDelayed());
+
         
-        //StartCoroutine(FillBubbleError("Bitcoin"));
     }
 
     private void Start()
     {
         BlaSounds = target.Voice;
-        Debug.Log(target);
+        foreach (var newTarget in target.Contacts.Keys)
+        {
+            if(newTarget.Vibecheck == VIBECHECK.NotPassed)
+                targets.Add(newTarget);
+        }
+        StartCoroutine(FillBubbleDelayed());
+        if(targets.Count == 0)
+            StopSpeechBubble();
     }
 
     public void Interact()
@@ -77,7 +85,14 @@ public class SpeechBubbleController : MonoBehaviour
             }
             else
             {
-                target.Vibecheck = VIBECHECK.Passed;
+                targets[currentContact].Vibecheck = VIBECHECK.Passed;
+                currentContact++;
+                if (currentContact >= targets.Count)
+                {
+                    target.Vibecheck = VIBECHECK.Surpassed;
+                    StopSpeechBubble();
+                }
+
             }
         }
         else
@@ -98,9 +113,9 @@ public class SpeechBubbleController : MonoBehaviour
         if (Random.Range(wordCount, wordMax) == wordMax-1 && keyword == "")
         {
             content.text = content.text + "<color=\"red\"> ";
-            if (Random.Range(0, 3) == 3)
+            if (Random.Range(0, 3) == 2)
             {
-                keyword = target.Name;
+                keyword = targets[currentContact].Name;
             }
             else
             {
@@ -113,6 +128,8 @@ public class SpeechBubbleController : MonoBehaviour
         {
             int blaIndex = getRandomBlaIndex();
             content.text = content.text + BlaList[blaIndex];
+            Debug.Log(blaIndex);
+            Debug.Log(BlaSounds.Length);
             source.PlayOneShot(BlaSounds[blaIndex]);
         }
         
