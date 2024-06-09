@@ -26,6 +26,13 @@ public class Guest : MonoBehaviour, IGuest
 
     private int modelIndex;
     
+    [SerializeField]
+    private GameObject SpeechBubblePrefab;
+    private GameObject SpeechBubbleRef;
+    private bool _speechBubbleActive = false;
+    [SerializeField] 
+    private Vector3 SpeechBubbleOffset = new Vector3(-1.25f,2.25f,0f);
+    
     
     void Start()
     {
@@ -152,4 +159,31 @@ public class Guest : MonoBehaviour, IGuest
         }
     }
 
+    public void Interact()
+    {
+        if (!_speechBubbleActive)
+        {
+            SpeechBubbleRef = Instantiate(SpeechBubblePrefab, SpeechBubbleOffset, Quaternion.identity, this.transform);
+            SpeechBubbleRef.GetComponent<SpeechBubbleController>().target = this;
+            _speechBubbleActive = true;
+        }
+        else
+        {
+            SpeechBubbleRef.GetComponent<SpeechBubbleController>().Interact();
+        }
+    }
+    
+    public bool SpeechBubbleActive
+    {
+        get
+        {
+            return _speechBubbleActive;
+        }
+        set
+        {
+            _speechBubbleActive = value;
+        }
+    }
+    
+    
 }
