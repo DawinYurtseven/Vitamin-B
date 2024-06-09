@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 6596736744014352925}
   serializedVersion: 2
   m_LocalRotation: {x: 0.035646178, y: -7.71039e-10, z: 2.7502072e-11, w: 0.9993645}
-  m_LocalPosition: {x: 0, y: 2, z: -4.999999}
+  m_LocalPosition: {x: 0, y: 2, z: -4.9999995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -263,7 +263,7 @@ Transform:
   m_GameObject: {fileID: 8718937279110963979}
   serializedVersion: 2
   m_LocalRotation: {x: 0.035646178, y: -7.71039e-10, z: 2.7502072e-11, w: 0.9993645}
-  m_LocalPosition: {x: 0, y: 2, z: -4.999999}
+  m_LocalPosition: {x: 0, y: 2, z: -4.9999995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -638,7 +638,19 @@ MonoBehaviour:
     m_ActionId: 79942fe9-13f4-4ac0-8840-2c1f12cac5e7
     m_ActionName: Character Controller/Walking[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 446a2df6-ecd0-4f2c-9891-2b9dcdfb69ef
     m_ActionName: Character Controller/Interact[/Keyboard/e]
   - m_PersistentCalls:

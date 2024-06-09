@@ -48,23 +48,31 @@ MonoBehaviour:
   _passedMats:
   - {fileID: 2100000, guid: 9c26e01f63fa96345be5d4ed0f5d8e43, type: 2}
   - {fileID: 2100000, guid: b993e24201fec574899f391d8dcd5402, type: 2}
-  - {fileID: 2100000, guid: 020972e57a91b2147b501e227ebf5a77, type: 2}
-  - {fileID: 2100000, guid: 9ef651484ea11d245af3d1789b986f4a, type: 2}
-  - {fileID: 2100000, guid: 5ed93a1cc24cb7a4a96644df023d79c6, type: 2}
-  - {fileID: 2100000, guid: e70bc75d6a08e1c4ca0b5e78439cfcc1, type: 2}
   _surpassedMats:
   - {fileID: 2100000, guid: 1420d728ab2395045a765b92cd2cbefb, type: 2}
   - {fileID: 2100000, guid: 3a6795b61ea599843890e1e021989a97, type: 2}
-  - {fileID: 2100000, guid: 2fb1f7c16d10c174b992189cb692418d, type: 2}
-  - {fileID: 2100000, guid: dd3e4af3865ad9e40a90cfb9f2f79fee, type: 2}
-  - {fileID: 2100000, guid: f3a7edcae7b716848887887b7631f4ac, type: 2}
-  - {fileID: 2100000, guid: eeadcd71722a5784085f0e3b629b956f, type: 2}
   _jobs:
   - TechArt
   - HR
+  - Gameplay Programmer
+  - Engineer
+  - Scrum Master
+  - Product Manager
+  - 2D Artist
+  - 3D Artist
+  - AI Engineer
+  - CryptoBRO
+  - CryptoGIRL
+  - Arme Student
   _names:
   - A
   - B
+  - Die andere da
+  - C
+  - D
+  - Der eine da
+  - X
+  - Deine X
   _numOfModels: 3
   _hatsAndHair:
   - {fileID: -2432090755550338912, guid: 7d61b7e6bddcc10438c7f42ecf0b63cc, type: 3}

@@ -33,7 +33,7 @@ public class Guest : MonoBehaviour, IGuest
     
     [SerializeField]
     private GameObject SpeechBubblePrefab;
-    private GameObject SpeechBubbleRef;
+    private GameObject _speechBubbleRef;
     private bool _speechBubbleActive = false;
     [SerializeField] 
     private Vector3 SpeechBubbleOffset = new Vector3(-1.25f,2.25f,0f);
@@ -166,27 +166,27 @@ public class Guest : MonoBehaviour, IGuest
 
     public void Interact()
     {
-        if (!_speechBubbleActive)
+        if (!_speechBubbleRef && _vibecheck == VIBECHECK.Passed)
         {
-            SpeechBubbleRef = Instantiate(SpeechBubblePrefab, SpeechBubbleOffset, Quaternion.identity, this.transform);
+            SpeechBubbleRef = Instantiate(SpeechBubblePrefab, this.transform.position + SpeechBubbleOffset, Quaternion.identity, this.transform);
             SpeechBubbleRef.GetComponent<SpeechBubbleController>().target = this;
-            _speechBubbleActive = true;
         }
         else
         {
-            SpeechBubbleRef.GetComponent<SpeechBubbleController>().Interact();
+            if(_speechBubbleRef)
+                SpeechBubbleRef.GetComponent<SpeechBubbleController>().Interact();
         }
     }
-    
-    public bool SpeechBubbleActive
+
+    public GameObject SpeechBubbleRef
     {
         get
         {
-            return _speechBubbleActive;
+            return _speechBubbleRef;
         }
         set
         {
-            _speechBubbleActive = value;
+            _speechBubbleRef = value;
         }
     }
 

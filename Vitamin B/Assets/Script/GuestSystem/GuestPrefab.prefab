@@ -983,6 +983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3549593803943507463}
   - component: {fileID: 8475446411323383602}
+  - component: {fileID: -613993684893926953}
   m_Layer: 3
   m_Name: GuestPrefab
   m_TagString: Untagged
@@ -1022,6 +1023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6b795bf467b8f4d83aa3ba917c3c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vibecheck: 0
+  _isBoss: 0
   _contacts: []
   _models:
   - {fileID: 7752865042160022914}
@@ -1050,6 +1053,29 @@ MonoBehaviour:
   SpeechBubblePrefab: {fileID: 1054478281229324122, guid: 8e5f62062a934a84195df1f32c4ea8e8,
     type: 3}
   SpeechBubbleOffset: {x: -1.75, y: 3, z: 0}
+--- !u!136 &-613993684893926953
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7305010839950501468}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8525183324657569908
 GameObject:
   m_ObjectHideFlags: 0

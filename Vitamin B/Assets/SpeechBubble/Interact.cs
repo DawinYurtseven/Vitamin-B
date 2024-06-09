@@ -20,17 +20,32 @@ public class Interact : MonoBehaviour
     public void interact()
     {
         RaycastHit hit;
-        Physics.SphereCast(transform.position, interactionradius,transform.forward, out hit, raycastlength, ~4);
+        //Physics.Raycast(transform.position + new Vector3(0,1,0),transform.forward, out hit, raycastlength, ~4, QueryTriggerInteraction.Collide);
+        Physics.SphereCast(transform.position + new Vector3(0,1,0), interactionradius,transform.forward, out hit, raycastlength, ~4, QueryTriggerInteraction.Collide);
+        //Debug.Log(hit.transform);
         if (hit.transform != null)
         {
-            hit.transform.GetComponent<IGuest>().Interact();
+            if (hit.transform.GetComponent<IGuest>() != null)
+            {
+                hit.transform.GetComponent<IGuest>().Interact();
+            }
+            else
+            {
+                Debug.Log("test");
+            }
         }
+        
     }
 
-    private void Awake()
+    private void Update()
+    {
+        Debug.DrawRay(transform.position + new Vector3(0,1,0), transform.forward * raycastlength);
+    }
+
+    /*private void Awake()
     {
         StartCoroutine(delayedActivation());
-    }
+    }*/
 
     IEnumerator delayedActivation()
     {
