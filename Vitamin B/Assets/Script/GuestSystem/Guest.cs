@@ -6,8 +6,15 @@ using UnityEngine.Serialization;
 [SelectionBase]
 public class Guest : MonoBehaviour, IGuest
 {
+    
+    [SerializeField] private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
+    
+    [SerializeField] private bool isBoss = false;
+    
     [SerializeField]
     private List<Guest> _contacts = new List<Guest>();
+    
+    
     
     [Header("Models")]
     [SerializeField] private GameObject[] _models;
@@ -18,8 +25,6 @@ public class Guest : MonoBehaviour, IGuest
     [SerializeField] private GameObject[] _neckReferences;
     [SerializeField] private GameObject[] _glassesReferences;
     
-    
-    [SerializeField] private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
     private AudioClip[] _voice;
     private Material[] _vibeMaterials;
     private string _name = "placeholder";
