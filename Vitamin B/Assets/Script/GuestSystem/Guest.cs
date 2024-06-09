@@ -9,7 +9,7 @@ public class Guest : MonoBehaviour, IGuest
     
     [SerializeField] private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
     
-    [SerializeField] private bool isBoss = false;
+    [SerializeField] private bool _isBoss = false;
     
     [SerializeField]
     private List<Guest> _contacts = new List<Guest>();
@@ -187,6 +187,14 @@ public class Guest : MonoBehaviour, IGuest
         set
         {
             _speechBubbleActive = value;
+        }
+    }
+
+    public bool isBoss
+    {
+        get
+        {
+            return _isBoss;
         }
     }
     
