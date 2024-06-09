@@ -19,7 +19,7 @@ public class Guest : MonoBehaviour, IGuest
     [SerializeField] private GameObject[] _glassesReferences;
     
     
-    private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
+    [SerializeField] private VIBECHECK _vibecheck = VIBECHECK.NotPassed;
     private AudioClip[] _voice;
     private Material[] _vibeMaterials;
     private string _name = "placeholder";
