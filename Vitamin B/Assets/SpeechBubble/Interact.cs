@@ -33,7 +33,6 @@ public class Interact : MonoBehaviour
             {
                 Debug.Log("test");
             }
-                
         }
         
     }
