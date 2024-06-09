@@ -10,10 +10,12 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private GameObject followTarget;
     [SerializeField] private Camera cam;
-    [SerializeField] private float uprightTorque;
-    [SerializeField] private AnimationCurve uprightTorqueCurve, directionalAngleCurve;
+    [SerializeField] private float height;
     [SerializeField] private float cameraXSpeed, cameraYSpeed;
     [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject master, slave;
+
+    [SerializeField] private GameObject hip;
     
     #endregion
 
@@ -28,6 +30,7 @@ public class CharacterController : MonoBehaviour
     {
         Move();
         //Balance();
+        CheckHeight();
     }
 
 
@@ -108,28 +111,39 @@ public class CharacterController : MonoBehaviour
         }
 
         Vector3 moveDirection = new Vector3(_movementVector.x, 0, _movementVector.y);
-        Vector3 move = transform.TransformDirection(moveDirection);
+        Vector3 move = transform.TransformDirection(moveDirection) + CalculatePushBackMovement();
 
         transform.position =
             Vector3.Lerp(transform.position, transform.position + move * _currentSpeed, Time.deltaTime);
         
     }
 
-    void Balance()
+    void CheckHeight()
     {
-        var balancePer = Vector3.Angle(transform.up, Vector3.up) / 180;
-        balancePer = uprightTorqueCurve.Evaluate(balancePer);
-        var rot = Quaternion.FromToRotation(transform.up, Vector3.up).normalized;
-
-
-        var angle = (followTarget.transform.rotation.eulerAngles.y - transform.rotation.eulerAngles.y) / 180;
-
-        if (angle > 0.5)
-        {
-            var percent = directionalAngleCurve.Evaluate(angle);
-            if (angle < 0) percent *= -1;
+        var hit = new RaycastHit();
+        bool isHit = Physics.Raycast(hip.transform.position, hip.transform.TransformDirection(-Vector3.up), out hit, Mathf.Infinity,LayerMask.GetMask("Ground"));
+        if (isHit) {
+            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
         }
     }
+
+    
+    
+    
+    private Vector3 CalculatePushBackMovement()
+    {
+        Vector3 slaveToMasterVector = (slave.transform.position - master.transform.position);
+        float distance = slaveToMasterVector.magnitude;
+
+        //keep in mind
+        float ratio = Mathf.Clamp(distance / 0.5f, 0, 1);
+        float magnitude = Mathf.SmoothStep(0, 1, ratio);
+        Vector3 moveVector = Vector3.ClampMagnitude(slaveToMasterVector, magnitude);
+
+        moveVector.y = 0;
+        return moveVector;
+    }
+
 }
 
 #endregion
