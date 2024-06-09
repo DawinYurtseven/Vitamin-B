@@ -121,7 +121,6 @@ public class CharacterController : MonoBehaviour
     void CheckHeight()
     {
         var hit = new RaycastHit();
-        Debug.DrawRay(hip.transform.position, Vector3.down * height, Color.red);
         bool isHit = Physics.Raycast(hip.transform.position, hip.transform.TransformDirection(-Vector3.up), out hit, Mathf.Infinity,LayerMask.GetMask("Ground"));
         if (isHit) {
             transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
