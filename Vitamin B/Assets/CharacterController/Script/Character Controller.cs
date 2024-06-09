@@ -52,6 +52,8 @@ public class CharacterController : MonoBehaviour
     {
         if (context.started)
         {
+            this.gameObject.GetComponent<Interact>().interact();
+            Debug.Log("test");
         }
     }
 

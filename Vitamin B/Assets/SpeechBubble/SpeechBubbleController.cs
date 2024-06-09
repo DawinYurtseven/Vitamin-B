@@ -82,6 +82,8 @@ public class SpeechBubbleController : MonoBehaviour
         {
             if (Enum.IsDefined(typeof(NoTopics), keyword))
             {
+                StopAllCoroutines();
+                content.text = "";
                 StartCoroutine(FillBubbleError(keyword));
             }
             else
@@ -184,6 +186,7 @@ public class SpeechBubbleController : MonoBehaviour
     {
         StopAllCoroutines();
         target.SpeechBubbleActive = false;
+        target.SpeechBubbleRef = null;
         Destroy(this.gameObject);
     }
 
