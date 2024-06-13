@@ -69,7 +69,7 @@ public class CharacterController : MonoBehaviour
     {
         if (context.performed)
         {
-            Vector2 delta = context.ReadValue<Vector2>().normalized;
+            Vector2 delta = context.ReadValue<Vector2>();
 
             followTarget.transform.Rotate(Vector3.up, delta.x * cameraXSpeed * Time.deltaTime);
             followTarget.transform.Rotate(Vector3.right, delta.y * cameraYSpeed * Time.deltaTime);
