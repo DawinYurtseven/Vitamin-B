@@ -7,9 +7,16 @@ public class CandiceNut : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClip;
     public AudioClip scream;
+
+    private bool once = false;
     
     public void FitInUrMouth()
     {
+        if (once)
+        {
+            return;
+        }
+        once = true;
         foreach (Rigidbody nut in nuts)
             StartCoroutine(Nutting(nut));
         
